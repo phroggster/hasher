@@ -5,7 +5,7 @@ build_script:
 - cmd: >-
     nuget restore Hasher.sln
 
-    msbuild Hasher.sln /p:Configuration=Release /p:Platform=AnyCPU
+    msbuild Hasher.sln /p:Configuration=Release /p:Platform="Any CPU"
 
     copy Hasher\bin\Release\Hasher.zip Hasher.zip
 
