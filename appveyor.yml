@@ -13,17 +13,15 @@ build:
   verbosity: normal
 after_build:
   - ps: |
-      Write-Host "Hello from powershell. Platform is..."
-      Write-Host $env:platform
       if($env:platform -eq "x86")
       {
-      copy Hasher\bin\Release\Hasher.zip Hasher.zip
-      copy Bootstrapper\bin\Release\HasherInstaller.exe HasherInstaller.exe
+      Push-AppveyorArtifact Hasher\bin\x86\Release\Hasher.zip -FileName Hasher.zip
+      Push-AppveyorArtifact Bootstrapper\bin\Release\HasherInstaller.exe -FileName HasherInstaller.exe
       }
       if($env:platform -eq "x64")
       {
-      copy Hasher\bin\x64\Release\Hasher.amd64.zip Hasher.amd64.zip
-      copy Bootstrapper\bin\x64\Release\HasherInstaller.amd64.exe HasherInstaller.amd64.exe
+      Push-AppveyorArtifact Hasher\bin\x64\Release\Hasher.amd64.zip -FileName Hasher.amd64.zip
+      Push-AppveyorArtifact Bootstrapper\bin\x64\Release\HasherInstaller.amd64.exe -FileName HasherInstaller.amd64.exe
       }
 artifacts:
 - path: Hasher.zip
