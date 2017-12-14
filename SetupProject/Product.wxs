@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="Hasher" Language="1033" Version="1.0.0.0" Manufacturer="Hasher Development Team" UpgradeCode="32352f10-47b6-455b-a720-0e4512cadfcc">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Media Id="1" Cabinet="Hasher.cab" EmbedCab="yes" />
+		<!--<MediaTemplate />-->
+
+		<Feature Id="HasherFeature" Title="Hasher" Level="1">
+			<ComponentGroupRef Id="HasherComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="Hasher" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="HasherComponents" Directory="INSTALLFOLDER">
+      <Component Id="HasherComponent" DiskId="1">
+        <File Id="HasherEXE" Source="$(var.Hasher.TargetPath)"/>
+      </Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
