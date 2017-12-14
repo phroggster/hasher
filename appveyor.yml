@@ -1,24 +1,39 @@
 version: 1.0.{build}
 image: Visual Studio 2017
-cache:
-  - packages -> **\packages.config
+cache: packages -> **\packages.config
 configuration: Release
 platform:
-  - x86
-  - x64
+- x86
+- x64
 before_build:
-  - nuget restore
+- cmd: nuget restore
 build:
-  parallel: true
   project: Hasher.sln
+  parallel: true
   verbosity: normal
-after_build:
-  - cmd: copy Hasher\bin\$(configuration)\Hasher.zip Hasher.zip
-  - cmd: copy Bootstrapper\bin\$(configuration)\HasherInstaller.exe HasherInstaller.exe
-  - cmd: copy Hasher\bin\x64\$(configuration)\Hasher.amd64.zip Hasher.amd64.zip
-  - cmd: copy Bootstrapper\bin\x64\$(configuration)\HasherInstaller.amd64.exe HasherInstaller.amd64.exe
 artifacts:
-  - path: Hasher.zip
-  - path: HasherInstaller.exe
-  - path: Hasher.amd64.zip
-  - path: HasherInstaller.amd64.exe
+- path: Hasher.zip
+- path: HasherInstaller.exe
+- path: Hasher.amd64.zip
+- path: HasherInstaller.amd64.exe
+on_success:
+- ps: >-
+    if($env:platform -eq "x86")
+
+    {
+
+    copy Hasher\bin\Release\Hasher.zip Hasher.zip
+
+    copy Bootstrapper\bin\Release\HasherInstaller.exe HasherInstaller.exe
+
+    }
+
+    if($env:platform -eq "x64")
+
+    {
+
+    copy Hasher\bin\x64\Release\Hasher.amd64.zip Hasher.amd64.zip
+
+    copy Bootstrapper\bin\x64\Release\HasherInstaller.amd64.exe HasherInstaller.amd64.exe
+
+    }
