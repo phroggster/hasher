@@ -6,6 +6,8 @@ configuration: Release
 platform:
   - x86
   - x64
+before_build:
+  - nuget restore
 build:
   parallel: true
   project: Hasher.sln
