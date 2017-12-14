@@ -1,10 +1,10 @@
 version: 1.0.{build}
 image: Visual Studio 2017
-cache: packages -> **\packages.config
 configuration: Release
 platform:
 - x86
 - x64
+cache: packages -> **\packages.config
 before_build:
 - cmd: nuget restore
 build:
@@ -12,6 +12,5 @@ build:
   parallel: true
   verbosity: normal
 after_build:
-  - ps: |
-      Push-AppveyorArtifact .\Hasher\bin\%PLATFORM%\Release\Hasher.zip -FileName Hasher.zip
-      Push-AppveyorArtifact .\Bootstrapper\bin\%PLATFORM%\Release\HasherInstaller.exe -FileName HasherInstaller.exe
+- cmd: appveyor PushArtifact Hasher\bin\%PLATFORM%\Release\Hasher.zip -FileName Hasher.zip
+- cmd: appveyor PushArtifact Bootstrapper\bin\%PLATFORM%\Release\HasherInstaller.exe -FileName HasherInstaller.exe
