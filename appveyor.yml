@@ -2,7 +2,7 @@ version: 1.0.{build}
 image: Visual Studio 2017
 cache: packages -> **\package.config
 build_script:
-  - cmd: >-
+- cmd: >-
     nuget restore Hasher.sln
 
     msbuild Hasher.sln /p:Configuration=Release /p:Platform=AnyCPU
@@ -17,7 +17,7 @@ build_script:
 
     copy SetupProject\bin\x64\Release\HasherInstaller.msi HasherInstaller.amd64.msi
 artifacts:
-  - path: Hasher.zip
-  - path: HasherInstaller.msi
-  - path: Hasher.amd64.zip
-  - path: HasherInstaller.amd64.msi
+- path: Hasher.zip
+- path: Hasher.msi
+- path: Hasher.amd64.zip
+- path: Hasher.amd64.msi
