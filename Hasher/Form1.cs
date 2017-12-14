@@ -23,6 +23,10 @@ namespace Hasher
         }
 
         private CancellationTokenSource _tokenSource;
+        private const string BrowseStringMnemonic = "&Browse...";
+        private const string CalculatingString = "Calculating...";
+        private const string CancelStringMnemonic = "&Cancel";
+        private const string CancellingString = "Cancelling";
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
@@ -34,8 +38,8 @@ namespace Hasher
                     _tokenSource = new CancellationTokenSource();
 
                     foreach (var tb in new[] { tbFileName, tbSHA1, tbSHA256, tbSHA512, tbSHA3256, tbSHA3512 })
-                        tb.Text = "Calculating...";
-                    btnBrowse.Text = "&Cancel";
+                        tb.Text = CalculatingString;
+                    btnBrowse.Text = CancelStringMnemonic;
                     tbFileName.Text = openFileDialog1.FileName;
                     Hash(openFileDialog1.FileName, _tokenSource.Token);
                 }
@@ -43,7 +47,7 @@ namespace Hasher
             else
             {
                 _tokenSource?.Cancel();
-                btnBrowse.Text = "Cancelling";
+                btnBrowse.Text = CancellingString;
             }
         }
 
@@ -52,17 +56,26 @@ namespace Hasher
             Close();
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (var tb in this.Controls.OfType<TextBox>().Where(t => t != tbFileName && !string.IsNullOrEmpty(t.Text) && !t.Text.Equals(CalculatingString)))
+            {
+                SetOutputText(tb, tb.Text);
+            }
+        }
+
         private void CleanupTasks()
         {
-            foreach (var tb in new[] { tbSHA1, tbSHA256, tbSHA512, tbSHA3256, tbSHA3512 }.Where(t => t.Text.Equals("Calculating...")))
+            foreach (var tb in new[] { tbSHA1, tbSHA256, tbSHA512, tbSHA3256, tbSHA3512 }.Where(t => t.Text.Equals(CalculatingString)))
             {
                 tb.Text = string.Empty;
             }
-            btnBrowse.Text = "&Browse...";
+            btnBrowse.Text = BrowseStringMnemonic;
 
             _tokenSource?.Dispose();
             _tokenSource = null;
         }
+
 
         private async void Hash(string fileName, CancellationToken token)
         {
@@ -90,7 +103,7 @@ namespace Hasher
             Invoke(new Action(() => CleanupTasks()));
         }
 
-        private static Task HashMd5(string fileName, CancellationToken token, TextBox tb)
+        private Task HashMd5(string fileName, CancellationToken token, TextBox tb)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -105,7 +118,7 @@ namespace Hasher
             });
         }
 
-        private static Task HashSha1(string fileName, CancellationToken token, TextBox tb)
+        private Task HashSha1(string fileName, CancellationToken token, TextBox tb)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -120,7 +133,7 @@ namespace Hasher
             });
         }
 
-        private static Task HashSha2_256(string fileName, CancellationToken token, TextBox tb)
+        private Task HashSha2_256(string fileName, CancellationToken token, TextBox tb)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -135,7 +148,7 @@ namespace Hasher
             });
         }
 
-        private static Task HashSha2_512(string fileName, CancellationToken token, TextBox tb)
+        private Task HashSha2_512(string fileName, CancellationToken token, TextBox tb)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -150,7 +163,7 @@ namespace Hasher
             });
         }
 
-        private static Task HashSha3_256(string fileName, CancellationToken token, TextBox tb)
+        private Task HashSha3_256(string fileName, CancellationToken token, TextBox tb)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -165,7 +178,7 @@ namespace Hasher
             });
         }
 
-        private static Task HashSha3_512(string fileName, CancellationToken token, TextBox tb)
+        private Task HashSha3_512(string fileName, CancellationToken token, TextBox tb)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -180,8 +193,10 @@ namespace Hasher
             });
         }
 
-        private static void SetOutputText(TextBox tb, string text)
+        private void SetOutputText(TextBox tb, string text)
         {
+            text = text ?? string.Empty;
+            text = cbUpperCase.Checked ? text.ToUpper() : text.ToLower();
             tb.Invoke(new Action(() => tb.Text = text));
         }
     }

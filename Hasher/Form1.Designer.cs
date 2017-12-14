@@ -45,13 +45,14 @@
             this.lblSHA3512 = new System.Windows.Forms.Label();
             this.tbMD5 = new System.Windows.Forms.TextBox();
             this.lblMD5 = new System.Windows.Forms.Label();
+            this.cbUpperCase = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnExit
             // 
             this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(317, 199);
+            this.btnExit.Location = new System.Drawing.Point(262, 197);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 2;
@@ -62,7 +63,7 @@
             // btnBrowse
             // 
             this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnBrowse.Location = new System.Drawing.Point(12, 199);
+            this.btnBrowse.Location = new System.Drawing.Point(12, 197);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(75, 23);
             this.btnBrowse.TabIndex = 1;
@@ -78,39 +79,41 @@
             // 
             // lblFileName
             // 
-            this.lblFileName.Location = new System.Drawing.Point(12, 11);
+            this.lblFileName.Location = new System.Drawing.Point(12, 9);
             this.lblFileName.Name = "lblFileName";
             this.lblFileName.Size = new System.Drawing.Size(75, 20);
             this.lblFileName.TabIndex = 3;
-            this.lblFileName.Text = "File Name:";
+            this.lblFileName.Text = "File:";
             this.lblFileName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tbFileName
             // 
             this.tbFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbFileName.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbFileName.Location = new System.Drawing.Point(93, 12);
             this.tbFileName.Name = "tbFileName";
             this.tbFileName.ReadOnly = true;
-            this.tbFileName.Size = new System.Drawing.Size(299, 20);
+            this.tbFileName.Size = new System.Drawing.Size(244, 18);
             this.tbFileName.TabIndex = 4;
             // 
             // tbSHA1
             // 
             this.tbSHA1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSHA1.Location = new System.Drawing.Point(93, 38);
+            this.tbSHA1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSHA1.Location = new System.Drawing.Point(93, 64);
             this.tbSHA1.Name = "tbSHA1";
             this.tbSHA1.ReadOnly = true;
-            this.tbSHA1.Size = new System.Drawing.Size(299, 20);
-            this.tbSHA1.TabIndex = 6;
+            this.tbSHA1.Size = new System.Drawing.Size(244, 18);
+            this.tbSHA1.TabIndex = 8;
             // 
             // lblSHA1
             // 
-            this.lblSHA1.Location = new System.Drawing.Point(12, 37);
+            this.lblSHA1.Location = new System.Drawing.Point(12, 61);
             this.lblSHA1.Name = "lblSHA1";
             this.lblSHA1.Size = new System.Drawing.Size(75, 20);
-            this.lblSHA1.TabIndex = 5;
+            this.lblSHA1.TabIndex = 7;
             this.lblSHA1.Text = "SHA-1:";
             this.lblSHA1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -118,18 +121,19 @@
             // 
             this.tbSHA256.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSHA256.Location = new System.Drawing.Point(93, 64);
+            this.tbSHA256.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSHA256.Location = new System.Drawing.Point(93, 90);
             this.tbSHA256.Name = "tbSHA256";
             this.tbSHA256.ReadOnly = true;
-            this.tbSHA256.Size = new System.Drawing.Size(299, 20);
-            this.tbSHA256.TabIndex = 8;
+            this.tbSHA256.Size = new System.Drawing.Size(244, 18);
+            this.tbSHA256.TabIndex = 10;
             // 
             // lblSHA256
             // 
-            this.lblSHA256.Location = new System.Drawing.Point(12, 63);
+            this.lblSHA256.Location = new System.Drawing.Point(12, 87);
             this.lblSHA256.Name = "lblSHA256";
             this.lblSHA256.Size = new System.Drawing.Size(75, 20);
-            this.lblSHA256.TabIndex = 7;
+            this.lblSHA256.TabIndex = 9;
             this.lblSHA256.Text = "SHA-256:";
             this.lblSHA256.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -137,15 +141,16 @@
             // 
             this.tbSHA3256.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSHA3256.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSHA3256.Location = new System.Drawing.Point(93, 116);
             this.tbSHA3256.Name = "tbSHA3256";
             this.tbSHA3256.ReadOnly = true;
-            this.tbSHA3256.Size = new System.Drawing.Size(299, 20);
+            this.tbSHA3256.Size = new System.Drawing.Size(244, 18);
             this.tbSHA3256.TabIndex = 12;
             // 
             // lblSHA3256
             // 
-            this.lblSHA3256.Location = new System.Drawing.Point(12, 115);
+            this.lblSHA3256.Location = new System.Drawing.Point(12, 113);
             this.lblSHA3256.Name = "lblSHA3256";
             this.lblSHA3256.Size = new System.Drawing.Size(75, 20);
             this.lblSHA3256.TabIndex = 11;
@@ -156,18 +161,19 @@
             // 
             this.tbSHA512.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSHA512.Location = new System.Drawing.Point(93, 90);
+            this.tbSHA512.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSHA512.Location = new System.Drawing.Point(93, 142);
             this.tbSHA512.Name = "tbSHA512";
             this.tbSHA512.ReadOnly = true;
-            this.tbSHA512.Size = new System.Drawing.Size(299, 20);
-            this.tbSHA512.TabIndex = 10;
+            this.tbSHA512.Size = new System.Drawing.Size(244, 18);
+            this.tbSHA512.TabIndex = 14;
             // 
             // lblSHA512
             // 
-            this.lblSHA512.Location = new System.Drawing.Point(12, 89);
+            this.lblSHA512.Location = new System.Drawing.Point(12, 139);
             this.lblSHA512.Name = "lblSHA512";
             this.lblSHA512.Size = new System.Drawing.Size(75, 20);
-            this.lblSHA512.TabIndex = 9;
+            this.lblSHA512.TabIndex = 13;
             this.lblSHA512.Text = "SHA-512:";
             this.lblSHA512.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -175,18 +181,19 @@
             // 
             this.tbSHA3512.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbSHA3512.Location = new System.Drawing.Point(93, 142);
+            this.tbSHA3512.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSHA3512.Location = new System.Drawing.Point(93, 168);
             this.tbSHA3512.Name = "tbSHA3512";
             this.tbSHA3512.ReadOnly = true;
-            this.tbSHA3512.Size = new System.Drawing.Size(299, 20);
-            this.tbSHA3512.TabIndex = 14;
+            this.tbSHA3512.Size = new System.Drawing.Size(244, 18);
+            this.tbSHA3512.TabIndex = 16;
             // 
             // lblSHA3512
             // 
-            this.lblSHA3512.Location = new System.Drawing.Point(12, 141);
+            this.lblSHA3512.Location = new System.Drawing.Point(12, 165);
             this.lblSHA3512.Name = "lblSHA3512";
             this.lblSHA3512.Size = new System.Drawing.Size(75, 20);
-            this.lblSHA3512.TabIndex = 13;
+            this.lblSHA3512.TabIndex = 15;
             this.lblSHA3512.Text = "SHA3-512:";
             this.lblSHA3512.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -194,20 +201,35 @@
             // 
             this.tbMD5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbMD5.Location = new System.Drawing.Point(93, 168);
+            this.tbMD5.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMD5.Location = new System.Drawing.Point(93, 38);
             this.tbMD5.Name = "tbMD5";
             this.tbMD5.ReadOnly = true;
-            this.tbMD5.Size = new System.Drawing.Size(299, 20);
-            this.tbMD5.TabIndex = 16;
+            this.tbMD5.Size = new System.Drawing.Size(244, 18);
+            this.tbMD5.TabIndex = 6;
             // 
             // lblMD5
             // 
-            this.lblMD5.Location = new System.Drawing.Point(12, 167);
+            this.lblMD5.Location = new System.Drawing.Point(12, 35);
             this.lblMD5.Name = "lblMD5";
             this.lblMD5.Size = new System.Drawing.Size(75, 20);
-            this.lblMD5.TabIndex = 15;
+            this.lblMD5.TabIndex = 5;
             this.lblMD5.Text = "MD5:";
             this.lblMD5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cbUpperCase
+            // 
+            this.cbUpperCase.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.cbUpperCase.AutoSize = true;
+            this.cbUpperCase.Checked = true;
+            this.cbUpperCase.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbUpperCase.Location = new System.Drawing.Point(133, 201);
+            this.cbUpperCase.Name = "cbUpperCase";
+            this.cbUpperCase.Size = new System.Drawing.Size(82, 17);
+            this.cbUpperCase.TabIndex = 17;
+            this.cbUpperCase.Text = "&Upper Case";
+            this.cbUpperCase.UseVisualStyleBackColor = true;
+            this.cbUpperCase.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form1
             // 
@@ -215,7 +237,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(404, 234);
+            this.ClientSize = new System.Drawing.Size(349, 232);
+            this.Controls.Add(this.cbUpperCase);
             this.Controls.Add(this.tbMD5);
             this.Controls.Add(this.lblMD5);
             this.Controls.Add(this.tbSHA3512);
@@ -232,7 +255,7 @@
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.btnExit);
-            this.MinimumSize = new System.Drawing.Size(365, 249);
+            this.MinimumSize = new System.Drawing.Size(365, 271);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -259,6 +282,7 @@
         private System.Windows.Forms.Label lblSHA3512;
         private System.Windows.Forms.TextBox tbMD5;
         private System.Windows.Forms.Label lblMD5;
+        private System.Windows.Forms.CheckBox cbUpperCase;
     }
 }
 
