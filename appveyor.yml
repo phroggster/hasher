@@ -13,13 +13,5 @@ build:
   verbosity: normal
 after_build:
   - ps: |
-      if($env:platform -eq "x86")
-      {
-      Push-AppveyorArtifact .\Hasher\bin\x86\Release\Hasher.x86.zip -FileName Hasher.zip
-      Push-AppveyorArtifact .\Bootstrapper\bin\Release\HasherInstaller.exe -FileName HasherInstaller.exe
-      }
-      if($env:platform -eq "x64")
-      {
-      Push-AppveyorArtifact .\Hasher\bin\x64\Release\Hasher.amd64.zip -FileName Hasher.amd64.zip
-      Push-AppveyorArtifact .\Bootstrapper\bin\x64\Release\HasherInstaller.amd64.exe -FileName HasherInstaller.amd64.exe
-      }
+      Push-AppveyorArtifact .\Hasher\bin\%PLATFORM%\Release\Hasher.zip -FileName Hasher.zip
+      Push-AppveyorArtifact .\Bootstrapper\bin\%PLATFORM%\Release\HasherInstaller.exe -FileName HasherInstaller.exe

@@ -3,7 +3,7 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
 	<Product Id="*" Name="$(var.ProductName)" Language="1033" Version="$(var.VersionNum)" Manufacturer="$(var.Manufacturer)" UpgradeCode="32352f10-47b6-455b-a720-0e4512cadfcc">
-		<Package InstallerVersion="200" Compressed="yes" Description="$(var.ProductName)" InstallScope="perMachine" />
+    <Package InstallerVersion="200" Compressed="yes" Description="$(var.ProductName)" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 		<MediaTemplate EmbedCab="yes" />
