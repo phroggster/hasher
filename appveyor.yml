@@ -11,11 +11,10 @@ build:
   project: Hasher.sln
   verbosity: normal
 after_build:
-  - cmd: >-
-    copy Hasher\bin\$(configuration)\Hasher.zip Hasher.zip && ^
-    copy Bootstrapper\bin\$(configuration)\HasherInstaller.exe HasherInstaller.exe && ^
-    copy Hasher\bin\x64\$(configuration)\Hasher.amd64.zip Hasher.amd64.zip && ^
-    copy Bootstrapper\bin\x64\$(configuration)\HasherInstaller.amd64.exe HasherInstaller.amd64.exe
+  - cmd: copy Hasher\bin\$(configuration)\Hasher.zip Hasher.zip
+  - cmd: copy Bootstrapper\bin\$(configuration)\HasherInstaller.exe HasherInstaller.exe
+  - cmd: copy Hasher\bin\x64\$(configuration)\Hasher.amd64.zip Hasher.amd64.zip
+  - cmd: copy Bootstrapper\bin\x64\$(configuration)\HasherInstaller.amd64.exe HasherInstaller.amd64.exe
 artifacts:
   - path: Hasher.zip
   - path: HasherInstaller.exe
