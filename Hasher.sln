@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hasher", "Hasher\Hasher.csp
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "SetupProject", "SetupProject\SetupProject.wixproj", "{36AEEE8B-0E01-4C47-BF89-A03997DCD564}"
 EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "Bootstrapper", "Bootstrapper\Bootstrapper.wixproj", "{8E2A3B0F-870E-4300-865A-232BF4A18AF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,15 @@ Global
 		{36AEEE8B-0E01-4C47-BF89-A03997DCD564}.Release|x64.Build.0 = Release|x64
 		{36AEEE8B-0E01-4C47-BF89-A03997DCD564}.Release|x86.ActiveCfg = Release|x86
 		{36AEEE8B-0E01-4C47-BF89-A03997DCD564}.Release|x86.Build.0 = Release|x86
+		{8E2A3B0F-870E-4300-865A-232BF4A18AF5}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8E2A3B0F-870E-4300-865A-232BF4A18AF5}.Debug|x64.ActiveCfg = Debug|x64
+		{8E2A3B0F-870E-4300-865A-232BF4A18AF5}.Debug|x86.ActiveCfg = Debug|x86
+		{8E2A3B0F-870E-4300-865A-232BF4A18AF5}.Release|Any CPU.ActiveCfg = Release|x86
+		{8E2A3B0F-870E-4300-865A-232BF4A18AF5}.Release|Any CPU.Build.0 = Release|x86
+		{8E2A3B0F-870E-4300-865A-232BF4A18AF5}.Release|x64.ActiveCfg = Release|x64
+		{8E2A3B0F-870E-4300-865A-232BF4A18AF5}.Release|x64.Build.0 = Release|x64
+		{8E2A3B0F-870E-4300-865A-232BF4A18AF5}.Release|x86.ActiveCfg = Release|x86
+		{8E2A3B0F-870E-4300-865A-232BF4A18AF5}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

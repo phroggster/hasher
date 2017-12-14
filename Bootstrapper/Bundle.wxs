@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?include $(var.SetupProject.ProjectDir)BuildVars.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+	<Bundle Name="$(var.ProductName)" Version="$(var.VersionNum)" Manufacturer="$(var.Manufacturer)" UpgradeCode="8e2a3b0f-870e-4300-865a-232bf4a18af5">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLargeLicense">
+      <bal:WixStandardBootstrapperApplication LicenseFile="License.rtf" LogoFile="Logo.png" ShowVersion="yes" />
+    </BootstrapperApplicationRef>
+    <Variable Name="InstallFolder" Type="string" Value="[$(var.PlatformProgramFilesFolder)]Hasher" bal:Overridable="yes" />
+		<Chain>
+      <MsiPackage Id="HasherMSI" Compressed="yes" DisplayInternalUI="no" SourceFile="$(var.SetupProject.TargetPath)" Vital="yes">
+        <MsiProperty Name="INSTALLLOCATION" Value="[InstallFolder]"/>
+      </MsiPackage>
+		</Chain>
+	</Bundle>
+</Wix>

@@ -1,6 +1,23 @@
-﻿namespace Hasher
+﻿/*
+ * Copyright © 2017  Hasher Development Team
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you
+ * may not use this file except in compliance with the License.
+ * 
+ * You may obtain a copy of the License at:
+ * https://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.
+ * 
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+namespace Hasher
 {
-    partial class Form1
+    partial class HasherForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +45,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HasherForm));
             this.btnExit = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -255,9 +273,10 @@
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.btnExit);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(365, 271);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Hasher";
             this.ResumeLayout(false);
             this.PerformLayout();
 

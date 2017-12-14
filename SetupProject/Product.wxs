@@ -1,29 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="Hasher" Language="1033" Version="1.0.0.0" Manufacturer="Hasher Development Team" UpgradeCode="32352f10-47b6-455b-a720-0e4512cadfcc">
-		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+<?include $(sys.CURRENTDIR)\BuildVars.wxi?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+	<Product Id="*" Name="$(var.ProductName)" Language="1033" Version="$(var.VersionNum)" Manufacturer="$(var.Manufacturer)" UpgradeCode="32352f10-47b6-455b-a720-0e4512cadfcc">
+		<Package InstallerVersion="200" Compressed="yes" Description="$(var.ProductName)" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-    <Media Id="1" Cabinet="Hasher.cab" EmbedCab="yes" />
-		<!--<MediaTemplate />-->
+		<MediaTemplate EmbedCab="yes" />
 
 		<Feature Id="HasherFeature" Title="Hasher" Level="1">
-			<ComponentGroupRef Id="HasherComponents" />
+      <ComponentRef Id="ProgramMenuDir" />
+      <ComponentGroupRef Id="HasherComps" />
 		</Feature>
 	</Product>
 
-	<Fragment>
+  <Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
-			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="Hasher" />
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ApplicationProgramsFolder" Name="Hasher">
+          <Component Id="ProgramMenuDir" Guid="{A8622CA1-ED65-499D-AD14-A3FB2FFCC728}">
+            <RemoveFolder Id="ProgramMenuDir" On="uninstall"/>
+            <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\Hasher" Type="integer" Value="1" Name="installed" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="$(var.PlatformProgramFilesFolder)">
+			  <Directory Id="INSTALLLOCATION" Name="Hasher" />
 			</Directory>
-		</Directory>
+    </Directory>
 	</Fragment>
 
-	<Fragment>
-		<ComponentGroup Id="HasherComponents" Directory="INSTALLFOLDER">
-      <Component Id="HasherComponent" DiskId="1">
-        <File Id="HasherEXE" Source="$(var.Hasher.TargetPath)"/>
+  <Fragment>
+		<ComponentGroup Id="HasherComps" Directory="INSTALLLOCATION">
+      <Component Id="SHA3Component" DiskId="1" Guid="{0FD110A5-498A-49FC-B80A-6C5458C77DA7}">
+        <File Id="SHA3DLL" DiskId="1" KeyPath="yes" Source="$(var.Hasher.TargetDir)SHA3.dll" />
+      </Component>
+      <Component Id="SHA3ManagedComp" DiskId="1" Guid="{9050F6D8-05F4-490A-9D06-91936C050880}">
+        <File Id="SHA3ManagedDLL" DiskId="1" KeyPath="yes" Source="$(var.Hasher.TargetDir)SHA3Managed.dll" />
+      </Component>
+      <Component Id="LICENSEComp" DiskId="1" Guid="{2CFCA84B-C86B-4A6E-BC04-1B6528E681BB}">
+        <File Id="LICENSErtf" DiskId="1" KeyPath="yes" Source="..\Bootstrapper\License.rtf" />
+      </Component>
+      <Component Id="NOTICEComp" DiskId="1" Guid="{DBB2536A-32AE-4367-8B68-133CECE4177B}">
+        <File Id="NOTICEtxt" DiskId="1" KeyPath="yes" Source="..\NOTICE" Name="NOTICE.txt" />
+      </Component>
+      <Component Id="HasherComp" DiskId="1" Guid="{4B046436-C9D2-4B43-9197-B2E9EDD7540E}">
+        <File Id="HasherEXE" DiskId="1" KeyPath="yes" Source="$(var.Hasher.TargetPath)">
+          <!-- Compile it into a native app using ngen. -->
+          <?if $(var.Win64) = yes ?>
+            <netfx:NativeImage Id="ngen_Hasher.exe" Platform="64bit" Priority="0" AppBaseDirectory="INSTALLLOCATION" />
+          <?else ?>
+            <netfx:NativeImage Id="ngen_Hasher.exe" Platform="32bit" Priority="0" AppBaseDirectory="INSTALLLOCATION" />
+          <?endif ?>
+          <Shortcut Id="HasherStartMenuShortcut" Advertise="yes" Directory="ApplicationProgramsFolder" Icon="Hasher.ico" IconIndex="0" Name="Hasher" WorkingDirectory="INSTALLLOCATION">
+            <Icon Id="Hasher.ico" SourceFile="$(var.Hasher.ProjectDir)Resources\Hasher.ico"/>
+          </Shortcut>
+        </File>
       </Component>
 		</ComponentGroup>
 	</Fragment>

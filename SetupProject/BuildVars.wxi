@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <!-- Product name as you want it to appear in Add/Remove Programs-->
+  <?if $(var.Platform) = x64 ?>
+    <?define ProductName = "Hasher (64 bit)" ?>
+    <?define Win64 = "yes" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+  <?else ?>
+    <?define ProductName = "Hasher" ?>
+    <?define Win64 = "no" ?>
+    <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+  <?endif ?>
+  <?define Manufacturer = "Hasher Development Team" ?>
+  <?if [%APPVEYOR] = "True" ?>
+    <?define VersionNum = "$(var.APPVEYOR_BUILD_VERSION)" ?>
+  <?else ?>
+    <?define VersionNum = "1.0.0" ?>
+  <?endif ?>
+</Include>
