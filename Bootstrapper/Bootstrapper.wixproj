@@ -20,11 +20,13 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <OutputPath>bin\x64\$(Configuration)\</OutputPath>
+    <OutputName>HasherInstaller.amd64</OutputName>
     <IntermediateOutputPath>obj\x64\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <OutputPath>bin\x64\$(Configuration)\</OutputPath>
+    <OutputName>HasherInstaller.amd64</OutputName>
     <IntermediateOutputPath>obj\x64\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>

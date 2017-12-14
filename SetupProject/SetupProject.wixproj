@@ -7,7 +7,7 @@
     <ProductVersion>3.11</ProductVersion>
     <ProjectGuid>36aeee8b-0e01-4c47-bf89-a03997dcd564</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>HasherInstaller</OutputName>
+    <OutputName>Hasher</OutputName>
     <OutputType>Package</OutputType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -24,10 +24,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
     <DefineConstants>Debug</DefineConstants>
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <OutputName>Hasher.amd64</OutputName>
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <OutputName>Hasher.amd64</OutputName>
     <IntermediateOutputPath>obj\$(Platform)\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
